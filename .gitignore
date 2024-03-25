@@ -1,1 +1,2 @@
-data/
+# ignore raw images
+raw_images/
