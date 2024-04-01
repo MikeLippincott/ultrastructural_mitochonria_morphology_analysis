@@ -6,7 +6,7 @@ The data are EM images of NIH3T3 cells treated with control short hairpin RNA (s
 These data are from the paper: [Suga et al. 2023](https://doi.org/10.1371/journal.pbio.3002246).
 The data are both raw Z-stacks and segmented mitochondria.
 The segmented mitochondria are in the form of a 3D mask.
-It should be noted that these data are annotated with the ground truth mitochondria, lamellar mitochonrial cristae, and tubular mitochondrial cristae.
+It should be noted that these data are annotated with the ground truth mitochondria, lamellar mitochondrial cristae, and tubular mitochondrial cristae.
 These ground truth masks are included in the data as `.tiff` files as well as the raw data as `.tiff` files.
 
 
