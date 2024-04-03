@@ -1,2 +1,5 @@
 # ignore raw images
 data/
+
+# ignore log files
+logs/
