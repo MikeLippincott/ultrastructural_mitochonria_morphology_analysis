@@ -9,6 +9,28 @@ The segmented mitochondria are in the form of a 3D mask.
 It should be noted that these data are annotated with the ground truth mitochondria, lamellar mitochondrial cristae, and tubular mitochondrial cristae.
 These ground truth masks are included in the data as `.tiff` files as well as the raw data as `.tiff` files.
 
+The current structure of the data is as follows.
+
+```bash
+-| shCtrl
+  -| cell_001
+    -| 0001
+      -| ori_imgs.tif
+      -| lamellar_cristae_imgs.tif
+      -| mito_imgs.tif
+      -| tubular_cristae_imgs.tif
+    -| ...
+  -| ...
+-| shOPA1
+  -| cell_001
+    -| 0001
+      -| ori_imgs.tif
+      -| lamellar_cristae_imgs.tif
+      -| mito_imgs.tif
+      -| tubular_cristae_imgs.tif
+    -| ...
+  -| ...
+```
 
 ## Future Data Release
 In the future, we plan to release the data on a public repository, or a similar platform.
