@@ -1,2 +1,10 @@
 # ignore raw images
-raw_images/
+data/
+
+# ignore log files
+logs/
+
+# ignore hidden files
+*.pyc
+*.DS_Store
+_pycache_/
