@@ -32,4 +32,4 @@ dependencies:
 - pip:
     - cellprofiler==4.2.5
     - CytoTable==0.0.6
-    - pycytominer
+    - pycytominer==1.1.0
