@@ -33,7 +33,7 @@ output_dir = pathlib.Path("./profiles/processed_profiles")
 output_dir.mkdir(parents=True, exist_ok=True)
 
 # Path to CytoTable converted profiles for each object
-converted_profiles_dir = pathlib.Path("./profiles/converted_profiles/")
+converted_profiles_dir = pathlib.Path("./profiles/converted_profiles/").resolve(strict=True)
 
 # List all the converted files in the directory
 converted_files = [file for file in converted_profiles_dir.iterdir() if file.is_file()]

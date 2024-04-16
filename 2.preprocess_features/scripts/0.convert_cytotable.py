@@ -18,6 +18,9 @@ from parsl.executors import HighThroughputExecutor
 # cytotable will merge objects from SQLite file into single cells and save as parquet file
 from cytotable import convert
 
+# pcytominer annotate will get the metadata from the image_df to apply to the other object dfs
+from pycytominer import annotate
+
 # Set the logging level to a higher level to avoid outputting unnecessary errors from config file in convert function
 logging.getLogger().setLevel(logging.ERROR)
 
@@ -122,22 +125,21 @@ metadata_cols = [
 new_metadata_cols = [col.replace("Image_", "") for col in metadata_cols]
 image_df = image_df.rename(columns=dict(zip(metadata_cols, new_metadata_cols)))
 
-# Merge metadata columns from image_df to each object data frame based on Metadata_ImageNumber
-mito_df = pd.merge(
-    mito_df, image_df[new_metadata_cols], on="Metadata_ImageNumber", how="inner"
+mito_df = annotate(
+    profiles=mito_df,
+    platemap=image_df[new_metadata_cols],
+    join_on=["Metadata_ImageNumber", "Metadata_ImageNumber"],
 )
-lamellar_df = pd.merge(
-    lamellar_df, image_df[new_metadata_cols], on="Metadata_ImageNumber", how="inner"
+lamellar_df = annotate(
+    profiles=lamellar_df,
+    platemap=image_df[new_metadata_cols],
+    join_on=["Metadata_ImageNumber", "Metadata_ImageNumber"],
 )
-tubular_df = pd.merge(
-    tubular_df, image_df[new_metadata_cols], on="Metadata_ImageNumber", how="inner"
+tubular_df = annotate(
+    profiles=tubular_df,
+    platemap=image_df[new_metadata_cols],
+    join_on=["Metadata_ImageNumber", "Metadata_ImageNumber"],
 )
-
-# Move metadata columns to the front
-image_df = image_df[new_metadata_cols + [col for col in image_df.columns if col not in new_metadata_cols]]
-mito_df = mito_df[new_metadata_cols + [col for col in mito_df.columns if col not in new_metadata_cols]]
-lamellar_df = lamellar_df[new_metadata_cols + [col for col in lamellar_df.columns if col not in new_metadata_cols]]
-tubular_df = tubular_df[new_metadata_cols + [col for col in tubular_df.columns if col not in new_metadata_cols]]
 
 # Update object number column in the object data frames and add Metadata_ prefix
 for df in [mito_df, lamellar_df, tubular_df]:
