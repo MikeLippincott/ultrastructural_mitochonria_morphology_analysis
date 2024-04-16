@@ -3,8 +3,12 @@ data/
 
 # ignore log files
 logs/
+runinfo/
 
 # ignore hidden files
 *.pyc
 *.DS_Store
 _pycache_/
+
+# ignore vscode files
+.vscode/
